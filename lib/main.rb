@@ -103,12 +103,18 @@ class LinkedList
 
   def insert_at(value, index)
     last_node = self.head
+    previous_node = last_node
     counter = 0
     until counter == index
+      previous_node = last_node
       last_node = last_node.next_node
       counter +=1
     end
-      last_node.next_node = value
+    our_node = Node.new(value)
+    previous_node.next_node = our_node
+    our_node.next_node = last_node
+    
+  end
 
   private 
 
@@ -127,6 +133,7 @@ newlist.append(20)
 newlist.append(30)
 newlist.append(40)
 newlist.append(100)
+newlist.insert_at(23,2)
 #newlist.to_s
 p newlist
 # p newlist.contains?(39)
